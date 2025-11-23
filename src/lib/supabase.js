@@ -213,4 +213,5 @@ export const getDashboardStats = async () => {
     totalTrademarks: trademarks.count || 0,
     totalBlogs: blogs.count || 0,
   };
+
 };
