@@ -39,24 +39,30 @@ const AdvocateWebsite = () => {
   };
 
   const handleContactSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const { data, error } = await createContactInquiry({
-      name: contactForm.name,
-      email: contactForm.email,
-      phone: contactForm.phone,
-      service_type: contactForm.service,
-      message: contactForm.message
-    });
-    setLoading(false);
-    if (error) {
-      alert('Error submitting form. Please try again.');
-    } else {
-      alert('Thank you for contacting us! We will get back to you shortly.');
-      setContactForm({ name: '', email: '', phone: '', message: '', service: 'general' });
-    }
-  };
+  e.preventDefault();
+  setLoading(true);
 
+  const formData = new FormData(e.target);
+  
+  try {
+    // REPLACE YOUR_EMAIL@example.com with your actual email
+    const response = await fetch('https://formsubmit.co/advoprincegupta@gmail.com', {
+      method: 'POST',
+      body: formData
+    });
+    
+    if (response.ok) {
+      alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+      setContactForm({ name: '', email: '', phone: '', message: '', service: 'general' });
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  } catch (error) {
+    alert('Error sending message. Please try again or call us directly.');
+  } finally {
+    setLoading(false);
+  }
+};
   const handleTrackCase = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -70,24 +76,30 @@ const AdvocateWebsite = () => {
   };
 
   const handleTrademarkSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const { data, error } = await createTrademarkApplication({
-      company_name: trademarkForm.companyName,
-      brand_name: trademarkForm.brandName,
-      category: trademarkForm.category,
-      email: trademarkForm.email,
-      phone: trademarkForm.phone,
-      description: trademarkForm.description
+  e.preventDefault();
+  setLoading(true);
+
+  const formData = new FormData(e.target);
+  
+  try {
+    // REPLACE YOUR_EMAIL@example.com with your actual email
+    const response = await fetch('https://formsubmit.co/advoprincegupta@gmail.com', {
+      method: 'POST',
+      body: formData
     });
-    setLoading(false);
-    if (error) {
-      alert('Error submitting application. Please try again.');
-    } else {
+    
+    if (response.ok) {
       alert('Trademark registration request submitted successfully! We will contact you within 24 hours.');
       setTrademarkForm({ companyName: '', brandName: '', category: '', email: '', phone: '', description: '' });
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-  };
+  } catch (error) {
+    alert('Error submitting application. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
@@ -709,5 +721,6 @@ const AdvocateWebsite = () => {
     </div>
   );
 };
+
 
 export default AdvocateWebsite;
