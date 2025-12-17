@@ -46,7 +46,7 @@ const AdvocateWebsite = () => {
   
   try {
     // REPLACE YOUR_EMAIL@example.com with your actual email
-    const response = await fetch('https://formsubmit.co/advoprincegupta@gmail.com', {
+    const response = await fetch('https://formsubmit.co/YOUR_EMAIL@example.com', {
       method: 'POST',
       body: formData
     });
@@ -63,6 +63,7 @@ const AdvocateWebsite = () => {
     setLoading(false);
   }
 };
+
   const handleTrackCase = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -83,7 +84,7 @@ const AdvocateWebsite = () => {
   
   try {
     // REPLACE YOUR_EMAIL@example.com with your actual email
-    const response = await fetch('https://formsubmit.co/advoprincegupta@gmail.com', {
+    const response = await fetch('https://formsubmit.co/YOUR_EMAIL@example.com', {
       method: 'POST',
       body: formData
     });
@@ -437,12 +438,20 @@ const AdvocateWebsite = () => {
 
             <div className="bg-white bg-opacity-5 backdrop-blur-md p-8 rounded-xl border border-white border-opacity-10">
               <h2 className="text-2xl font-bold mb-6">Register Your Trademark</h2>
-              <form onSubmit={handleTrademarkSubmit} className="space-y-6">
+              <form onSubmit={handleTrademarkSubmit} className="space-y-6"
+              method="POST"
+  action="https://formsubmit.co/advoprincegupta@gmail.com">
+    <input type="hidden" name="_subject" value="New Trademark Application - Advocate Website" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_autoresponse" value="Thank you for contacting us! We will get back to you soon." />
+  <input type="text" name="_honey" style="display:none" />
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2">Company Name</label>
                     <input
                       type="text"
+                      name="company_name"
                       value={trademarkForm.companyName}
                       onChange={(e) => setTrademarkForm({...trademarkForm, companyName: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -453,6 +462,7 @@ const AdvocateWebsite = () => {
                     <label className="block text-sm font-semibold mb-2">Brand/Trademark Name</label>
                     <input
                       type="text"
+                      name="brand_name"
                       value={trademarkForm.brandName}
                       onChange={(e) => setTrademarkForm({...trademarkForm, brandName: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -464,6 +474,7 @@ const AdvocateWebsite = () => {
                 <div>
                   <label className="block text-sm font-semibold mb-2">Business Category</label>
                   <select
+                   name="category" 
                     value={trademarkForm.category}
                     onChange={(e) => setTrademarkForm({...trademarkForm, category: e.target.value})}
                     className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white"
@@ -484,6 +495,7 @@ const AdvocateWebsite = () => {
                     <label className="block text-sm font-semibold mb-2">Email Address</label>
                     <input
                       type="email"
+                      name="email"
                       value={trademarkForm.email}
                       onChange={(e) => setTrademarkForm({...trademarkForm, email: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -494,6 +506,7 @@ const AdvocateWebsite = () => {
                     <label className="block text-sm font-semibold mb-2">Phone Number</label>
                     <input
                       type="tel"
+                      name="phone"
                       value={trademarkForm.phone}
                       onChange={(e) => setTrademarkForm({...trademarkForm, phone: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -505,6 +518,7 @@ const AdvocateWebsite = () => {
                 <div>
                   <label className="block text-sm font-semibold mb-2">Trademark Description</label>
                   <textarea
+                   name="description"
                     value={trademarkForm.description}
                     onChange={(e) => setTrademarkForm({...trademarkForm, description: e.target.value})}
                     rows="4"
@@ -603,11 +617,21 @@ const AdvocateWebsite = () => {
 
               <div className="bg-white bg-opacity-5 backdrop-blur-md p-8 rounded-xl border border-white border-opacity-10">
                 <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
-                <form onSubmit={handleContactSubmit} className="space-y-6">
+                <form onSubmit={handleContactSubmit} className="space-y-6"
+                method="POST"
+  action="https://formsubmit.co/advoprincegupta@gmail.com"
+>
+  <input type="hidden" name="_subject" value="New Contact Form Submission - Advocate Website" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_next" value="https://sreshthas-legal-associates.vercel.app/?success=true" />
+  <input type="hidden" name="_autoresponse" value="Thank you for contacting us! We will get back to you soon." />
+  <input type="text" name="_honey" style="display:none" />
                   <div>
                     <label className="block text-sm font-semibold mb-2">Full Name</label>
                     <input
                       type="text"
+                      name="name"
                       value={contactForm.name}
                       onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -618,6 +642,7 @@ const AdvocateWebsite = () => {
                     <label className="block text-sm font-semibold mb-2">Email Address</label>
                     <input
                       type="email"
+                      name="email"
                       value={contactForm.email}
                       onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -628,6 +653,7 @@ const AdvocateWebsite = () => {
                     <label className="block text-sm font-semibold mb-2">Phone Number</label>
                     <input
                       type="tel"
+                      name="phone"
                       value={contactForm.phone}
                       onChange={(e) => setContactForm({...contactForm, phone: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-500"
@@ -637,6 +663,7 @@ const AdvocateWebsite = () => {
                   <div>
                     <label className="block text-sm font-semibold mb-2">Service Required</label>
                     <select
+                    name="service"
                       value={contactForm.service}
                       onChange={(e) => setContactForm({...contactForm, service: e.target.value})}
                       className="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white"
@@ -653,6 +680,7 @@ const AdvocateWebsite = () => {
                   <div>
                     <label className="block text-sm font-semibold mb-2">Message</label>
                     <textarea
+                    name="message"
                       value={contactForm.message}
                       onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
                       rows="4"
@@ -721,6 +749,5 @@ const AdvocateWebsite = () => {
     </div>
   );
 };
-
 
 export default AdvocateWebsite;
