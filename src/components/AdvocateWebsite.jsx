@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Scale, FileText, Briefcase, User, MessageSquare, Home, Search, Menu, X, Send, Calendar, CheckCircle, Clock, AlertCircle, Phone, Mail, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
-import { getCaseById, getBlogPosts, createContactInquiry, createTrademarkApplication } from '../lib/supabase';
+//import { getCaseById, getBlogPosts, createContactInquiry, createTrademarkApplication } from '../lib/supabase';
 
 const AdvocateWebsite = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [blogs, setBlogs] = useState([]);
+  const [blogs] = useState([
+  { id: '1', title: 'Understanding Intellectual Property Rights in 2024', excerpt: 'A comprehensive guide to protecting your innovations...', published_date: '2024-11-15', author: 'Adv. Rajesh Kumar' },
+  { id: '2', title: 'Corporate Law: Recent Amendments You Should Know', excerpt: 'Key changes in corporate governance regulations...', published_date: '2024-11-10', author: 'Adv. Rajesh Kumar' },
+  { id: '3', title: 'Trademark Registration Process Simplified', excerpt: 'Step-by-step guide to registering your brand...', published_date: '2024-11-05', author: 'Adv. Rajesh Kumar' }
+]);
   const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', message: '', service: 'general' });
   const [caseTrackingId, setCaseTrackingId] = useState('');
   const [trademarkForm, setTrademarkForm] = useState({ companyName: '', brandName: '', category: '', email: '', phone: '', description: '' });
@@ -20,20 +24,7 @@ const AdvocateWebsite = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  useEffect(() => {
-    if (currentPage === 'blog') {
-      loadBlogs();
-    }
-  }, [currentPage]);
-
-  const loadBlogs = async () => {
-    setLoading(true);
-    const { data, error } = await getBlogPosts();
-    if (data) setBlogs(data);
-    setLoading(false);
-  };
-
-  const navigate = (page) => {
+    const navigate = (page) => {
     setCurrentPage(page);
     setMobileMenuOpen(false);
   };
@@ -46,7 +37,7 @@ const AdvocateWebsite = () => {
   
   try {
     // REPLACE YOUR_EMAIL@example.com with your actual email
-    const response = await fetch('https://formsubmit.co/YOUR_EMAIL@example.com', {
+    const response = await fetch('https://formsubmit.co/advoprincegupta@gmail.com', {
       method: 'POST',
       body: formData
     });
@@ -84,7 +75,7 @@ const AdvocateWebsite = () => {
   
   try {
     // REPLACE YOUR_EMAIL@example.com with your actual email
-    const response = await fetch('https://formsubmit.co/YOUR_EMAIL@example.com', {
+    const response = await fetch('https://formsubmit.co/advoprincegupta@gmail.com', {
       method: 'POST',
       body: formData
     });
